@@ -19,10 +19,35 @@ class GameEngine:
     def __init__(self):
         self.hook = Hook(x=WIDTH / 2, surface_y=SURFACE_Y, max_depth_y=MAX_DEPTH_Y, speed=5)
         self.fish_list = [
-            Fish(x=100, y=180, speed=2, point_value=10, color=(80, 180, 220)),
-            Fish(x=400, y=280, speed=-2, point_value=10, color=(80, 180, 220)),
-            Fish(x=250, y=380, speed=3, point_value=10, color=(80, 180, 220)),
-        ]
+            # Small, fast fish — 10 points
+            Fish(
+                x=100, y=180,
+                speed=3,
+                width=36, height=18,
+                point_value=10,
+                color=(80, 180, 220)
+            ),
+
+            # Large, slow fish — 20 points
+            Fish(
+                x=400, y=280,
+                speed=-1,
+                width=50, height=26,
+                point_value=20,
+                color=(220, 100, 80)
+            ),
+
+            # Medium, faster fish — 30 points
+            Fish(
+                x=250, y=380,
+                speed=4,
+                width=30, height=15,
+                point_value=30,
+                color=(100, 220, 120)
+            ),
+       ]
+        
+        
         self.hooked_fish = None
         self.score = 0
 

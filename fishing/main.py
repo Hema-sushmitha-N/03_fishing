@@ -8,6 +8,7 @@ import pygame
 
 from game.game_engine import GameEngine
 from game.renderer import WINDOW_SIZE
+from game.hook import IDLE
 
 
 def main():
@@ -23,6 +24,10 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
+
+            elif event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
+                if engine.hook.state == IDLE:
+                    engine.hook.start_cast()
 
         engine.update()
         engine.draw(screen, font)

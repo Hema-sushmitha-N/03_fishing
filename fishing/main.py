@@ -20,14 +20,20 @@ def main():
 
     engine = GameEngine()
     running = True
+
     while running:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
 
-            elif event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
-                if engine.hook.state == IDLE:
-                    engine.hook.start_cast()
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_SPACE:
+                    if engine.hook.state == IDLE:
+                        engine.hook.start_cast()
+
+                elif event.key == pygame.K_r:
+                    if engine.game_over:
+                        engine.restart()
 
         engine.update()
         engine.draw(screen, font)
